@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# UV / virtual environments
+.venv/
+.env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# UV lock (keep uv.lock, ignore these)
+.python-version
+
+# Temp / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Runtime temp files created by the app
+/tmp/pdf_cropper_*.pdf

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Cropper</title>
+  <meta name="description" content="Locally-hosted web app for cropping individual pages of a PDF." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────────── -->
+  <header>
+    <div class="logo">✂️</div>
+    <div>
+      <h1>PDF Cropper</h1>
+      <div class="subtitle">Select crop regions per page, then download</div>
+    </div>
+  </header>
+
+  <!-- ── Body ───────────────────────────────────────────────────────────────── -->
+  <div class="app-body">
+
+    <!-- Sidebar (hidden until PDF loaded) -->
+    <aside class="sidebar" id="sidebar-section" style="display:none">
+      <div class="sidebar-header-row">
+        <div class="sidebar-header">Pages</div>
+        <span class="sidebar-status" id="thumb-status"></span>
+      </div>
+      <div class="thumb-progress">
+        <div class="thumb-progress-bar" id="thumb-progress-bar"></div>
+      </div>
+      <div class="thumb-list" id="thumb-list"></div>
+    </aside>
+
+    <!-- Drop zone (shown initially) -->
+    <div id="drop-zone">
+      <div class="drop-card" id="drop-card">
+        <div class="drop-icon">📄</div>
+        <h2>Open a PDF</h2>
+        <p>Click to browse, or drag &amp; drop a PDF file here</p>
+      </div>
+      <input type="file" id="file-input" accept=".pdf,application/pdf" />
+    </div>
+
+    <!-- Viewer pane (hidden until PDF loaded) -->
+    <div class="viewer" id="viewer-pane" style="display:none">
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <button class="btn" id="btn-prev" disabled title="Previous page (←)">← Prev</button>
+        <span class="page-indicator" id="page-indicator">— / —</span>
+        <button class="btn" id="btn-next" disabled title="Next page (→)">Next →</button>
+        <div class="toolbar-sep"></div>
+        <button class="btn" id="btn-duplicate" disabled title="Duplicate this slide">⧉ Duplicate</button>
+        <button class="btn btn-danger" id="btn-delete-slide" disabled title="Delete this slide">🗑</button>
+        <div class="toolbar-sep"></div>
+        <button class="btn btn-danger" id="btn-clear" disabled title="Clear crop for this page (Delete)">✕ Clear
+          crop</button>
+        <span class="crop-info" id="crop-info" style="display:none"></span>
+        <div class="toolbar-spacer"></div>
+        <button class="btn btn-accent" id="btn-process" disabled>⬇ Download</button>
+      </div>
+
+      <!-- Canvas area -->
+      <div class="canvas-area">
+        <div class="page-wrapper" id="page-wrapper">
+          <img id="page-img" alt="PDF page" draggable="false" />
+          <canvas id="crop-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="statusbar">
+        <span class="status-dot"></span>
+        <span id="status-msg">Ready</span>
+      </div>
+
+    </div><!-- /viewer -->
+  </div><!-- /app-body -->
+
+  <!-- ── Processing overlay ────────────────────────────────────────────────── -->
+  <div id="overlay">
+    <div class="spinner"></div>
+    <div id="overlay-msg">Processing…</div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
