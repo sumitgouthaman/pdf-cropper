@@ -2,6 +2,8 @@
 
 A locally-hosted web app for cropping individual pages of a PDF — each page independently.
 
+![Demo](screenshots/recording.gif)
+
 ## Why
 
 Tools like [Stirling PDF](https://github.com/Stirling-Tools/Stirling-PDF) and [BentoPDF](https://bentopdf.com) apply the same crop rectangle to every page. That's fine if you have a uniform document, but it's not ideal for scanned books or mixed-format PDFs where each page needs a different crop. I built this to handle exactly that case.
